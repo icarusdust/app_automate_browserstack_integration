@@ -37,11 +37,11 @@ In order to successfully upload your app to BrowserStack environment, you will a
 
 You can test your native and hybrid apps on BrowserStack through Codemagic. For that purpose, you need to go through three steps using REST API endpoints:
 
-**
+
 1. Upload your app
 2. Upload Test Suite
 3. Start testing
-**
+
 
 In order to upload test Suites for android apps, you need to run ./gradlew assembleAndroidTest. Make sure that **app/build.gradle** file includes Instrumentation runner:
 
