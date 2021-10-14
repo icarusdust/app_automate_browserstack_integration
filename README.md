@@ -1,9 +1,6 @@
 # app_automate_browserstack_integration
 
 
-# app_automate_browserstack_integration
-
-
 
 ## Getting Started
 
