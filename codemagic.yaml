@@ -32,6 +32,7 @@ workflows:
                      mkdir -p test-results
                      flutter test --machine > test-results/flutter.json      
                      test_report: test-results/flutter.json
+                     ignore_failure: true
             - name: Build Android Test release
               script: |
                 cd android && ./gradlew assembleAndroidTest
