@@ -51,3 +51,6 @@ workflows:
         publishing:
             slack: 
               channel: "#test_channel"
+              notify: 
+                 success: true
+                 failure: true
