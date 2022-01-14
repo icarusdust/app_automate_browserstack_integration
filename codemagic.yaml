@@ -24,15 +24,6 @@ workflows:
                     keyAlias=$CM_KEY_ALIAS_USERNAME
                     storeFile=/tmp/keystore.keystore
                     EOF 
-            - name: TESTING
-              script: |
-                 - echo 'previous step'
-                 - name: Unit tests
-                   script: |
-                     mkdir -p test-results
-                     flutter test --machine > test-results/flutter.json      
-                     test_report: test-results/flutter.json
-                     ignore_failure: true
             - name: Build Android Test release
               script: |
                 cd android && ./gradlew assembleAndroidTest
@@ -43,6 +34,15 @@ workflows:
                 # export NEW_BUILD_NUMBER=$(($(google-play get-latest-build-number --package-name "$PACKAGE_NAME" --tracks=alpha) + 1))             
                 export NEW_BUILD_NUMBER=$(($(firebase-app-distribution get-latest-build-number --package-name "$PACKAGE_NAME") + 1))
                 cd android && ./gradlew assembleRelease
+            - name: TESTING
+              script: |
+                 - echo 'previous step'
+                 - name: Unit tests
+                   script: |
+                     mkdir -p test-results
+                     flutter test --machine > test-results/flutter.json      
+                     test_report: test-results/flutter.json
+                     ignore_failure: true
 #             - name: BrowserStack upload
 #               script: |      
 #                  APP_URL=$(curl -u "$BROWSERSTACK_USERNAME:$BROWSERSTACK_ACCESS_TOKEN" -X POST "https://api-cloud.browserstack.com/app-automate/upload" -F "file=@android/app/build/outputs/apk/release/app-release.apk" | jq -r '.app_url') 
