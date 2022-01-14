@@ -33,7 +33,7 @@ workflows:
             - name: Build Android Test release
               script: |
                 cd android && ./gradlew assembleAndroidTest
-                ignore_failure: true
+              ignore_failure: true
             - name: Build Android release
               script: |
                 # Set environment variable so it can be used to increment build number in android/app/build.gradle
